@@ -5,23 +5,26 @@ function verifyMediaSupported() {
 }
 
 function setupMediaRecorder() {
-  if (verifyMediaSupported()) {
-    console.log('media supported')
-    navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
-      mediaRecorder = new MediaRecorder(stream)
-      mediaRecorder.ondataavailable = (e) => {
-        onReceiveChunkFromMic(e.data)
-        console.log('data available!')
-        // chunks.push(e.data)
-      }
-
-      // mediaRecorder.onstop = () => {
-      //   for (var i = 0; i < chunks.length; i++) {
-      //     playAudio(chunks[i])
-      //   }
-      // }
-    })
+  if (!verifyMediaSupported()) {
+    console.log('meida not supported!')
+    return
   }
+  
+  console.log('media supported')
+  navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
+    mediaRecorder = new MediaRecorder(stream)
+    mediaRecorder.ondataavailable = (e) => {
+      onReceiveChunkFromMic(e.data)
+      console.log('data available!')
+      // chunks.push(e.data)
+    }
+
+    // mediaRecorder.onstop = () => {
+    //   for (var i = 0; i < chunks.length; i++) {
+    //     playAudio(chunks[i])
+    //   }
+    // }
+  })
 
   setInterval(requester, 500)
 }
