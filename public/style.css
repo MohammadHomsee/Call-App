@@ -1,0 +1,60 @@
+.mic-button {
+  border-radius: 100%;
+  appearance: none;
+  background-color: rgb(255, 255, 255);
+  border: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  width: 4rem;
+  height: 4rem;
+  transition: 0.5s ease;
+}
+
+.record-button-enable {
+  width: 5rem;
+  height: 5rem;
+  background-color: #FFFFFF;
+}
+
+.record-button-disabled {
+  width: 4rem;
+  height: 4rem;
+  background-color: #AAAAAA;
+}
+
+.mic-button:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 10px rgba(0,0,0, 0.5);
+}
+
+.mic-icon {
+ display: block; 
+ max-width: 100%;
+}
+
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+footer.main-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Chain Test</title>
+</head>
+<body>
+  <script>
+    class EventChain {
+      event;
+
+      constructor(event) {
+        this.event = event
+        this.completedSelfEvent = false
+        this.nextEventInvoked = false
+      }
+      
+      invoke() {
+        event()
+        // this.next.invoke()
+        // this.completedSelfEvent = true;
+
+        // if (this.next != null) {
+        //   this.nextEventInvoked = true
+        // }
+      }
+    }
+
+    e1 = new EventChain(() => {console.log('1')})
+    e2 = new EventChain(() => {console.log('2')})
+
+    e1.next = e2
+    e1.invoke()
+    
+  </script>
+</body>
+</html>
