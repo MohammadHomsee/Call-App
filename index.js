@@ -20,8 +20,8 @@ function main() {
 
 function runExpressServer() {
   app.use(express.static(__dirname + '/public'))
-  app.use('/', async (req, res) => {
-    res.send(await readFile('frontend/index.html', 'utf8'))
+  app.use('/', (req, res) => {
+    res.send(fs.readFileSync(path.join(__dirname, 'public', 'index.html')))
   })
 
   var secureServer = https.createServer({
