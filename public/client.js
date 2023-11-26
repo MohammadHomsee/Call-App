@@ -3,7 +3,7 @@ var websocket
 const PORT = 8888
 
 function connect() {
-  url = `ws://206.189.20.56:${PORT}`
+  url = `wss://206.189.20.56:${PORT}`
 
   websocket = new WebSocket(url)
   websocket.binaryType = 'arraybuffer'

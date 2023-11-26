@@ -8,14 +8,16 @@ const fs = require('fs')
 const path = require('path')
 
 
-const WebSocket = require('ws')
+const WebSocket = require('ws').Server
 
 const SOCKET_PORT = 8888
 const EXPRESS_PORT = 3333
 
+let secureServer
+
 function main() {
-  runSocketServer()
   runExpressServer()
+  runSocketServer()
 }
 
 function runExpressServer() {
@@ -33,7 +35,10 @@ function runExpressServer() {
 }
 
 function runSocketServer() {
-  const wws = new WebSocket.Server({port: SOCKET_PORT})
+  const wws = new WebSocket({
+    server: secureServer,
+    port: SOCKET_PORT
+  })
   console.log(`server listenning on port ${SOCKET_PORT}....`)
   
   var users = []
