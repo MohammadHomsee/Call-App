@@ -1,5 +1,9 @@
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
+function main() {
+  setupMediaRecorder()
+}
+
 function verifyMediaSupported() {
   return navigator.mediaDevices && navigator.mediaDevices.getUserMedia;
 }
@@ -9,7 +13,7 @@ function setupMediaRecorder() {
     console.log('meida not supported!')
     return
   }
-  
+
   console.log('media supported')
   navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
     mediaRecorder = new MediaRecorder(stream)
@@ -66,4 +70,5 @@ function playAudio(blob) {
   fileReader.readAsArrayBuffer(blob)
 }
 
-setupMediaRecorder()
+main()
+
