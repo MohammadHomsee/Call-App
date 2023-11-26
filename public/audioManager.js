@@ -9,10 +9,10 @@ function verifyMediaSupported() {
 }
 
 function setupMediaRecorder() {
-  if (!verifyMediaSupported()) {
-    console.log('meida not supported!')
-    return
-  }
+  // if (!verifyMediaSupported()) {
+  //   console.log('meida not supported!')
+  //   return
+  // }
 
   console.log('media supported')
   navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
