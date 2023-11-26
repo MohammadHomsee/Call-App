@@ -1,6 +1,6 @@
 var websocket
 
-const PORT = 8000
+const PORT = 8888
 
 function connect() {
   url = `ws://206.189.20.56:${PORT}`
