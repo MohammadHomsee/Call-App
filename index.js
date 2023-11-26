@@ -1,7 +1,12 @@
+var https = require('https');
+
 const express = require('express')
 const app = express()
 
 const { readFile } = require('fs/promises')
+const fs = require('fs')
+const path = require('path')
+
 
 const WebSocket = require('ws')
 
@@ -14,11 +19,17 @@ function main() {
 }
 
 function runExpressServer() {
-  app.listen(EXPRESS_PORT)
   app.use(express.static(__dirname + '/public'))
-  app.get('/', async (req, res) => {
+  app.use('/', async (req, res) => {
     res.send(await readFile('frontend/index.html', 'utf8'))
   })
+
+  var secureServer = https.createServer({
+    key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
+  }, app);
+
+  secureServer.listen(EXPRESS_PORT, () => console.log(`Secure Server on port ${EXPRESS_PORT}`))
 }
 
 function runSocketServer() {
