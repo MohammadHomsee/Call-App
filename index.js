@@ -26,14 +26,14 @@ function runExpressServer() {
     res.send(fs.readFileSync(path.join(__dirname, 'public', 'index.html')))
   })
 
-  // var secureServer = https.createServer({
-  //   key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
-  //   cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
-  // }, app);
+  var secureServer = https.createServer({
+    key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
+  }, app);
 
-  // secureServer.listen(EXPRESS_PORT, () => console.log(`Secure Server on port ${EXPRESS_PORT}`))
+  secureServer.listen(EXPRESS_PORT, () => console.log(`Secure Server on port ${EXPRESS_PORT}`))
 
-  app.listen(EXPRESS_PORT)
+  // app.listen(EXPRESS_PORT)
 }
 
 function runSocketServer() {
