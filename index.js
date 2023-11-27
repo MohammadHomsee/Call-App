@@ -11,7 +11,7 @@ const path = require('path')
 const WebSocket = require('ws').Server
 
 const SOCKET_PORT = 8888
-const EXPRESS_PORT = 3333
+const EXPRESS_PORT = 80
 
 let secureServer
 
