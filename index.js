@@ -38,7 +38,6 @@ function runExpressServer() {
 function runSocketServer() {
   const wws = new WebSocketServer({
     server: secureServer,
-    
   })
     
   var users = []
