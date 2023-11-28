@@ -25,7 +25,7 @@ function runExpressServer() {
     res.send(fs.readFileSync(path.join(__dirname, 'public', 'index.html')))
   })
 
-  var secureServer = https.createServer({
+  secureServer = https.createServer({
     key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
     cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
   }, app);
@@ -37,7 +37,8 @@ function runExpressServer() {
 
 function runSocketServer() {
   const wws = new WebSocketServer({
-    server: secureServer
+    server: secureServer,
+    
   })
   
   console.log(`server listenning on port ${SOCKET_PORT}....`)
