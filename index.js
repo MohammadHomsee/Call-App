@@ -37,9 +37,9 @@ function runExpressServer() {
 
 function runSocketServer() {
   const wws = new WebSocket({
-    server: secureServer,
     port: SOCKET_PORT
   })
+  
   console.log(`server listenning on port ${SOCKET_PORT}....`)
   
   var users = []
