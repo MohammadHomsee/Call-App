@@ -7,7 +7,7 @@ const { readFile } = require('fs/promises')
 const fs = require('fs')
 const path = require('path')
 
-const WebSocket = require('ws').Server
+const WebSocketServer = require('ws').WebSocketServer;
 
 const SOCKET_PORT = 8888
 const EXPRESS_PORT = 443
@@ -36,8 +36,8 @@ function runExpressServer() {
 }
 
 function runSocketServer() {
-  const wws = new WebSocket({
-    port: SOCKET_PORT
+  const wws = new WebSocketServer({
+    server: secureServer
   })
   
   console.log(`server listenning on port ${SOCKET_PORT}....`)

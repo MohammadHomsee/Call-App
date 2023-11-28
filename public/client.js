@@ -1,9 +1,9 @@
 var websocket
 
-const PORT = 8888
+const PORT = 443
 
 function connect() {
-  url = `ws://www.graphicron.com:${PORT}`
+  url = `wss://www.graphicron.com:${PORT}`
 
   websocket = new WebSocket(url)
   websocket.binaryType = 'arraybuffer'
