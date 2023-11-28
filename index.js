@@ -40,9 +40,7 @@ function runSocketServer() {
     server: secureServer,
     
   })
-  
-  console.log(`server listenning on port ${SOCKET_PORT}....`)
-  
+    
   var users = []
   
   wws.on('connection', (ws) => {
