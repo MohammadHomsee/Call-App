@@ -7,11 +7,10 @@ const { readFile } = require('fs/promises')
 const fs = require('fs')
 const path = require('path')
 
-
 const WebSocket = require('ws').Server
 
 const SOCKET_PORT = 8888
-const EXPRESS_PORT = 80
+const EXPRESS_PORT = 443
 
 let secureServer
 
